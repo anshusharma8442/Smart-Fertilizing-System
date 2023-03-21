@@ -1,0 +1,6 @@
+Message
+Precipitation Amount
+The amount of rain for 2 days, counting today is 13.25 mm and chances is 40%
+62.72
+135.58
+200.48
