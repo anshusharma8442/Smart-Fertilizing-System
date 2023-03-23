@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<!-- <link rel="stylesheet" href="css/style.css"> -->
+<style>
+    dl {
+        width: 100%;
+        overflow: hidden;
+        /* background: #ff0; */
+        padding: 0;
+        margin: 0
+    }
+
+    dt {
+        float: left;
+        width: 50%;
+        /* adjust the width; make sure the total of both is 100% */
+        /* background: #cc0; */
+        padding: 0;
+        margin: 0
+    }
+
+    dd {
+        float: left;
+        width: 50%;
+        /* adjust the width; make sure the total of both is 100% */
+        /* background: #dd0; */
+        padding: 0;
+        margin: 0
+    }
+</style>
+<nav style="width:100%; height:20vh; ">
+    <div class="container" style="display: flex; justify-content: center; margin-top: 10px;">
+        <h3 class="logo" style="color: #008000; font-weight: 1000;">Smart Fertizer System</span></h3>
+    </div>
+    <div style="display: flex; justify-content: center;">
+        <h1 class="big-title translate" data-speed="0.5">We Make Your Land With The Best Value</h1>
+    </div>
+</nav>
+<hr>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<!-- <img src="/static/parallax/top1.png" class="top translate" data-speed="0.3" alt="">
+    <img src="/static/parallax/bottom2.png" class="Bottom translate" data-speed="-0.25" alt=""> -->
+</header><br>
+
+<!-- <section id="scroll2">
+    <div class="shadow">
+        <a href="#scroll2">
+            <div class="scroll-down"></div>
+        </a>
+    </div> -->
+
+<div>
+    <div class="content opacity" style="height: 50vh; width:100%;display: flex; flex-direction: row;">
+        <div style="height: 20vh; width:50%;">
+            <h2 class="title text-center">
+                Entered Details
+            </h2>
+            <div class="option2" id="detail"
+                style="display:flex; justify-content:space-around; align-items:center; flex-direction:column;">
+                <p class="state1 text-capitalize border border-dark bg-primary"
+                    style="padding:1px 4px; border-radius:1px; width: 10rem;">{{FORM_DATA['crop']}}</p>
+                <p class="state1 text-capitalize border border-dark bg-primary"
+                    style="padding:1px 4px; border-radius:1px; width: 10rem;">{{FORM_DATA['state']}}</p>
+                <p class="state1 text-capitalize border border-dark bg-primary"
+                    style="padding:1px 4px; border-radius:1px; width: 10rem;">{{FORM_DATA['city']}}</p>
+            </div>
+        </div>
+        {% if CALL_SUCCESS|length == 1 %}
+        <div class="answer" style="height:50vh; width:50%;">
+            <div style="height:30vh; width:100%; ">
+                <h3 class="text-left">Required Nutrient Ratio</h3>
+                <dl>
+                    <dt>N :&nbsp; &nbsp;</dt>
+                    <dd>{{ NPK[0]['Label_N'] }}</dd>
+                    <dt>P :&nbsp; &nbsp;</dt>
+                    <dd>{{ NPK[0]['Label_P'] }}</dd>
+                    <dt>K : &nbsp; &nbsp;</dt>
+                    <dd>{{ NPK[0]['Label_K'] }}</dd>
+                </dl>
+                <hr>
+                <h4>{{ POPUP_DATA[0][0]}}</h5>
+                    <h5>{{ POPUP_DATA[0][1]}}</h5>
+                    <h6>{{ POPUP_DATA[0][2]}}</h6>
+            </div>
+            {% endif %}
+            {% if CALL_SUCCESS|length == 0 %}
+            <div class="answer">
+                <h4>Data not available, try different city.</h4>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+
+
+    <a href="/" style="text-align: right;">
+        <form action="/">
+            <!-- <button class="bgm-primary"type="submit">&lt; Back</button> -->
+            <button type="submit" class="btn btn-primary border-dark" style="padding:0 5px">&lt; Back</button>
+        </form>
+    </a>
+
+    {% if CALL_SUCCESS|length == 1 %}
+    <div class="days3" style="overflow-x: scroll;">
+        <hr>
+        <h3 style="text-align:center; margin-top: 20px; letter-spacing: 5px;">&nbsp;&nbsp;&nbsp;&nbsp; 7 DAYS WEATHER
+            REPORT
+            <hr>
+        </h3>
+        <br>
+        <div>
+            {% for di in SEVEN_DAYS %}
+
+            <div class="days2 row border" style="overflow-x: scroll;">
+                {% for key,value in di.items() %}
+                <div class="col border">
+                    <!-- <div class="col-md-8">.col-md-8</div> -->
+                    {{key}} : {{value}}
+                </div>
+                <!-- <br><br> -->
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+</div>
+<script>
+    window.scrollBy(0, 1110)
+</script>
+</section><br><br>
+
+<!-- <footer class="footer">
+    <div class="container2">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Rajadeep Singh Naruka</h4>
+                <ul>
+                    <li><a href="#">19EEACS094</a></li>
+                    <li><a href="#">19CS94</a></li>
+                    <li><a href="#">Department of Computer Science</a></li>
+                    <li><a href="">Engineering College, Ajmer</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Garvit Mangal</h4>
+                <ul>
+                    <li><a href="#">19EEACS034</a></li>
+                    <li><a href="#">19CS34</a></li>
+                    <li><a href="#">Department of Computer Science</a></li>
+                    <li><a href="">Engineering College, Ajmer</a></li>
+                </ul>
+
+            </div>
+            <div class="footer-col">
+                <h4>Anuj Kumar Agarwal</h4>
+                <ul>
+                    <li><a href="#">19EEACS009</a></li>
+                    <li><a href="#">19CS09</a></li>
+                    <li><a href="#">Department of Computer Science</a></li>
+                    <li><a href="">Engineering College, Ajmer</a></li>
+                </ul>
+
+            </div>
+            <div class="footer-col">
+                <h4>Anshu Kumar Sharma</h4>
+                <ul>
+                    <li><a href="#">19EEACS008</a></li>
+                    <li><a href="#">19CS08</a></li>
+                    <li><a href="#">Department of Computer Science</a></li>
+                    <li><a href="">Engineering College, Ajmer</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</footer> -->
+
+{% endblock %}
